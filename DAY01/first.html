@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- <script src="./test.js"></script> -->
+  <!-- <script async src="./test.js"></script> -->
+  <script defer src="./test.js"></script>
+
+
+</head>
+
+<body>
+  <h1>Welcome to javaScripts</h1>
+
+  <div id="someId">
+
+  </div>
+
+  <!-- <script src="./test.js"></script> -->
+</body>
+
+</html>
+
+
+<!-- Question differnce between SCRIPT tage in head, body and in the head but with async and defer  -->
+
+<!-- 
+The placement of the <script> tag in an HTML document affects how and when JavaScript is loaded and executed. Here's the difference between placing the <script> tag in the <head>, the <body>, and using the async or defer attributes:
+
+Placing <script> in <head>
+The script is loaded and executed before the HTML content is rendered.
+This can block page rendering and delay the display of content, making the page load slower.
+Useful if the script must run before the page is visible.
+
+
+Placing <script> in <body> (usually just before </body>)
+The HTML is loaded and rendered first, and then the script runs.
+This ensures that the page content appears quickly while JavaScript loads later.
+Common practice for improving page load speed.
+
+Placing <script> in <head> with async
+The script is fetched and executed asynchronously while the rest of the page continues to load.
+Execution timing is unpredictable; scripts load independently and may execute out of order.
+Ideal for loading external scripts that don’t depend on other scripts.
+
+Placing <script> in <head> with defer
+The script is fetched while the page loads but executes only after the HTML is fully loaded.
+Scripts maintain their order of execution.
+Best for running scripts after the document is completely parsed, avoiding render-blocking. 
+
+-->
