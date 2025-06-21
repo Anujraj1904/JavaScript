@@ -14,27 +14,71 @@
 
 // give the option to play again
 
+const MIN_NUMBER = 0;
+const MAX_NUMBER = 10;
 
 function NGG() {
-  console.log("Secret Number Gussing Game");
+  const randomNumber = Math.floor(Math.random() * 10) + 1;
+  let attempts = 0;
+  let guess = null;
 
-  const userChoicePrompt = prompt("Gusse the Number");
+  console.log("Secret Number Guessing Game between 1 to 10");
 
-  console.log("your selection :", userChoicePrompt)
-  const randomNumber = Math.floor(Math.random() * 10) +1;
+  while (guess !== randomNumber) {
+    userChoicePrompt = prompt("Guess the Number between 1 to 10");
 
-  console.log("Number :", randomNumber);
+    guess = parseInt(userChoicePrompt);
+    console.log("your selection :", guess);
 
-  if ( randomNumber === userChoicePrompt) {
-    console.log("You gusse the right number")
-  } else if ( 1 <= randomNumber <=5 && 1<= userChoicePrompt <= 5 ) {
-    console.log("You are close enough");
-    const userChoicePrompt = prompt("Gusse the Number");
-  } else if ( 5 < randomNumber >= 10 && 5 < userChoicePrompt >= 10 ) {
-    console.log("You are not close to the suprise number");
-    const userChoicePrompt = prompt("Gusse the Number");
+    if (isNaN(guess) || guess < MIN_NUMBER || guess > MAX_NUMBER) {
+      console.log("Please enter a valid number between 1 and 10.");
+      continue;
+    }
+
+    attempts++;
+
+    // if (randomNumber === guess) {
+    //   console.log("Number :", randomNumber);
+    //   console.log(`You guess the right number in ${attempts} attempts!`);
+    // } else if (
+    //   (randomNumber >= 1 &&
+    //     randomNumber <= 5 &&
+    //     guess >= 1 &&
+    //     guess <= 5) ||
+    //   (randomNumber > 5 &&
+    //     randomNumber >= 10 &&
+    //     guess > 5 &&
+    //     guess >= 10)
+    // ) {
+    //   console.log("You are close enough");
+    // } else {
+    //   console.log("You are not close to the Suprise number. Try Again!");
+    // }
+
+    const difference = Math.abs(randomNumber - guess);
+    if (difference === 0) {
+      console.log("Number :", randomNumber);
+      console.log(`You guessed the right number in ${attempts} attempts!`);
+    } else if (difference === 1) {
+      console.log("You are very close! Try again.");
+    } else if (difference === 2) {
+      console.log("You are close enough! Try again.");
+    } else if (difference === 3) {
+      console.log("You are getting there! Try again.");
+    } else {
+      console.log("You are not close to the surprise number. Try Again!");
+    }
   }
 
+  const playAgainPrompt = prompt("Do you want to play Again? (yes/no)");
+  const playAgain = playAgainPrompt
+    ? playAgainPrompt.toLocaleLowerCase()
+    : "no";
+  if (playAgain === "yes") {
+    NGG();
+  } else {
+    console.log("Thanks for Playing! See you Next Time");
+  }
 }
 
 NGG();
